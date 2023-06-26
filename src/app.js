@@ -3,14 +3,16 @@ require("dotenv").config();
 const db = require("./utils/database")
 const confirmation = require("./models/confirmation.models")
 const  confirmationRoutes = require("../src/routes/confirmation.routes")
+const cors = require('cors')
 
 confirmation;
 
 const app = express();
 
+app.use(cors())
 app.use(express.json());
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.DB_PORT || 8000;
 
 db.sync()
   .then(() => {
